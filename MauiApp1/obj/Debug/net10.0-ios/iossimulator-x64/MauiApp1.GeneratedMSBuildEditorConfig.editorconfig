@@ -20,13 +20,13 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MauiApp1
-build_property.ProjectDir = D:\测试\MauiApp1\MauiApp1\
+build_property.ProjectDir = D:\test\INFT2051\MauiApp1\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
-[D:/测试/MauiApp1/MauiApp1/App.xaml]
+[D:/test/INFT2051/MauiApp1/App.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.App.xaml
 build_metadata.AdditionalFiles.TargetPath = App.xaml
@@ -36,7 +36,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[D:/测试/MauiApp1/MauiApp1/AppShell.xaml]
+[D:/test/INFT2051/MauiApp1/AppShell.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
@@ -46,7 +46,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[D:/测试/MauiApp1/MauiApp1/MainPage.xaml]
+[D:/test/INFT2051/MauiApp1/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.MainPage.xaml
 build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
@@ -56,7 +56,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[D:/测试/MauiApp1/MauiApp1/Resources/Styles/Colors.xaml]
+[D:/test/INFT2051/MauiApp1/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Resources.Styles.Colors.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
@@ -66,11 +66,21 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[D:/测试/MauiApp1/MauiApp1/Resources/Styles/Styles.xaml]
+[D:/test/INFT2051/MauiApp1/Resources/Styles/Styles.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/test/INFT2051/MauiApp1/TaskPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.TaskPage.xaml
+build_metadata.AdditionalFiles.TargetPath = TaskPage.xaml
+build_metadata.AdditionalFiles.RelativePath = TaskPage.xaml
 build_metadata.AdditionalFiles.Inflator = Runtime
 build_metadata.AdditionalFiles.NoWarn = 
 build_metadata.AdditionalFiles.EnableDiagnostics = 
