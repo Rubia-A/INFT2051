@@ -21,7 +21,7 @@
                 HorizontalOptions="Center"
                 TextColor="White"/>
 
-                <!-- Month -->c
+                <!-- Month -->
                 <Label
                 Text="March 2026"
                 FontSize="20"
