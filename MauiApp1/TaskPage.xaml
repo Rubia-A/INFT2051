@@ -1,41 +1,22 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiApp1.TaskPage">
-    
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MauiApp1.TaskPage"
+    BackgroundColor="#1E1E1E">
+
     <VerticalStackLayout Padding="30" Spacing="15">
 
-        <Label 
+        <Label
+            x:Name="TitleLabel"
             Text="Task List"
             FontSize="30"
-            HorizontalOptions="Center"/>
+            HorizontalOptions="Center"
+            TextColor="White"/>
 
-        <HorizontalStackLayout>
+        <VerticalStackLayout x:Name="TaskList"/>
 
-            <CheckBox/>
-
-            <Label Text="Finish homework"/>
-
-        </HorizontalStackLayout>
-
-        <HorizontalStackLayout>
-
-            <CheckBox/>
-
-            <Label Text="Study C#"/>
-
-        </HorizontalStackLayout>
-
-        <HorizontalStackLayout>
-
-            <CheckBox/>
-
-            <Label Text="Prepare presentation"/>
-
-        </HorizontalStackLayout>
-
-        <Button
-            Text="Import PDF"/>
+        <Button Text="Import PDF"/>
 
     </VerticalStackLayout>
 
