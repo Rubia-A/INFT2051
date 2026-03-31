@@ -2762,7 +2762,6 @@ D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-android\MauiApp1.GeneratedMSBuildEdi
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-android\MauiApp1.AssemblyInfoInputs.cache
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-android\MauiApp1.AssemblyInfo.cs
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-android\MauiApp1.csproj.CoreCompileInputs.cache
-D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-android\MauiApp1.sourcelink.json
 D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-android\MauiApp1.runtimeconfig.json
 D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-android\MauiApp1.dll
 D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-android\MauiApp1.pdb
@@ -5050,7 +5049,6 @@ D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34a
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\ContainerView.java
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\ContentViewGroup.java
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\FragmentManagerExtensions_CallBacks.java
-D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\GlobalWindowInsetListener.java
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\LayoutViewGroup.java
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\LocalizedDigitsKeyListener.java
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\MauiAccessibilityDelegateCompat.java
@@ -5315,3 +5313,6 @@ D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-android\stamp\_ConvertResourcesCases
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-android\stamp\_GenerateJavaStubs.stamp
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-android\stamp\_GeneratePackageManagerJava.stamp
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-android\stamp\_ResolveLibraryProjectImports.stamp
+D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\MauiMaterialContextThemeWrapper.java
+D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\MauiWindowInsetListener.java
+D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-android\android\src\crc6488302ad6e9e4df1a\MauiAppCompatActivity_PredictiveBackCallback.java

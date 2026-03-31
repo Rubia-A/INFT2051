@@ -1531,7 +1531,6 @@ D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-windows10.0.19041.0\win-x64\mauiimag
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-windows10.0.19041.0\win-x64\MauiApp1.AssemblyInfoInputs.cache
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-windows10.0.19041.0\win-x64\MauiApp1.AssemblyInfo.cs
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-windows10.0.19041.0\win-x64\MauiApp1.csproj.CoreCompileInputs.cache
-D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-windows10.0.19041.0\win-x64\MauiApp1.sourcelink.json
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-windows10.0.19041.0\win-x64\XamlC.stamp
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-windows10.0.19041.0\win-x64\MauiApp1.csproj.Up2Date
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-windows10.0.19041.0\win-x64\MauiApp1.dll
