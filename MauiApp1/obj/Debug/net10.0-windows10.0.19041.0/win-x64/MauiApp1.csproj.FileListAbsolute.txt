@@ -1553,3 +1553,4 @@ D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-windows10.0.19041.0\win-x64\pri.resf
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-windows10.0.19041.0\win-x64\qualifiers.txt
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-windows10.0.19041.0\win-x64\qualifiers.txt.intermediate
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-windows10.0.19041.0\win-x64\MultipleQualifiersPerDimensionFound.txt
+D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-windows10.0.19041.0\win-x64\MauiApp1.sourcelink.json

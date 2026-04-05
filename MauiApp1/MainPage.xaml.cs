@@ -47,14 +47,16 @@ public partial class MainPage : ContentPage
                 HeightRequest = 60,
                 CornerRadius = 12,
                 BackgroundColor = isToday
-                    ? Colors.White
+                    ? Colors.Orange
                     : Color.FromArgb("#9D8BD9")
             };
+
+            string fullDateKey = new DateTime(year, month, day).ToString("yyyy-MM-dd");
+            btn.CommandParameter = fullDateKey;
 
             btn.Clicked += OnDateClicked;
 
             int position = day + startDay - 1;
-
             int row = position / 7;
             int col = position % 7;
 
@@ -63,10 +65,10 @@ public partial class MainPage : ContentPage
     }
     async void OnDateClicked(object sender, EventArgs e)
     {
-        var button = sender as Button;
-        string selectedDate = button.Text;
-
-        await Navigation.PushAsync(new TaskPage(selectedDate));
+        if (sender is Button button && button.CommandParameter is string selectedDate)
+        {
+            await Navigation.PushAsync(new TaskPage(selectedDate));
+        }
     }
     void PreviousMonth(object sender, EventArgs e)
     {
@@ -80,7 +82,7 @@ public partial class MainPage : ContentPage
 
         GenerateCalendar();
     }
-
+      
     void NextMonth(object sender, EventArgs e)
     {
         currentMonth++;

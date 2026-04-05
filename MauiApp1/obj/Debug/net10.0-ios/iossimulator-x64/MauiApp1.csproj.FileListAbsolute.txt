@@ -636,3 +636,5 @@ D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-ios\iossimulator-x64\refint\MauiApp1
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-ios\iossimulator-x64\MauiApp1.pdb
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-ios\iossimulator-x64\MauiApp1.genruntimeconfig.cache
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-ios\iossimulator-x64\ref\MauiApp1.dll
+D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-ios\iossimulator-x64\build-signature\signature
+D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-ios\iossimulator-x64\MauiApp1.sourcelink.json

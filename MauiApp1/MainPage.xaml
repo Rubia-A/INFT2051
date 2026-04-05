@@ -23,7 +23,7 @@
                     x:Name="MonthLabel"
                     FontSize="20"
                     VerticalOptions="Center"
-                    TextColor="#BBBBBB"/>
+                    TextColor="White"/>
                 <Button Text="&gt;" Clicked="NextMonth"/>
             </HorizontalStackLayout>
 

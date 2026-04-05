@@ -5,19 +5,130 @@
     x:Class="MauiApp1.TaskPage"
     BackgroundColor="#1E1E1E">
 
-    <VerticalStackLayout Padding="30" Spacing="15">
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="16">
 
-        <Label
-            x:Name="TitleLabel"
-            Text="Task List"
-            FontSize="30"
-            HorizontalOptions="Center"
-            TextColor="White"/>
+            <Label
+                x:Name="TitleLabel"
+                Text="Tasks"
+                FontSize="30"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                TextColor="White" />
 
-        <VerticalStackLayout x:Name="TaskList"/>
+            <Label
+                x:Name="DateLabel"
+                FontSize="18"
+                HorizontalOptions="Center"
+                TextColor="#BBBBBB" />
 
-        <Button Text="Import PDF"/>
+            <Label
+                x:Name="StatusLabel"
+                TextColor="Red"
+                FontSize="14"
+                IsVisible="False"/>
 
-    </VerticalStackLayout>
+            <!-- Add task area -->
+            <Border
+                Stroke="#444444"
+                StrokeThickness="1"
+                BackgroundColor="#2A2A2A"
+                Padding="16">
 
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Text="Add Custom Task"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+                    <Entry
+                        x:Name="TaskEntry"
+                        Placeholder="Enter a task"
+                        PlaceholderColor="#999999"
+                        TextColor="White"
+                        BackgroundColor="#3A3A3A" />
+
+                    <Button
+                        Text="Add Task"
+                        Clicked="AddTaskClicked"
+                        BackgroundColor="#9D8BD9"
+                        TextColor="Black" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!--  PDF import -->
+            <Border
+                Stroke="#444444"
+                StrokeThickness="1"
+                BackgroundColor="#2A2A2A"
+                Padding="16">
+
+                <VerticalStackLayout Spacing="10">
+                    <Label
+                        Text="Future PDF Import"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+
+                    <Label
+                        Text="Reserved for File System / File Picker and OCR later."
+                        TextColor="#BBBBBB" />
+
+                    <Button
+                        Text="Import PDF (Coming Soon)"
+                        Clicked="PdfComingSoonClicked"
+                        BackgroundColor="#666666"
+                        TextColor="White" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label
+                Text="Task List"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="White" />
+
+            <CollectionView
+                x:Name="TaskCollectionView"
+                SelectionMode="None">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            Stroke="#444444"
+                            StrokeThickness="1"
+                            BackgroundColor="#2A2A2A"
+                            Padding="12"
+                            Margin="0,0,0,10">
+
+                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                                <Label
+                                    Text="{Binding Text}"
+                                    VerticalOptions="Center"
+                                    TextColor="White">
+
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Tapped="OnEditTaskTapped" />
+                                    </Label.GestureRecognizers>
+
+                                </Label>
+
+                                <Button
+                                    Grid.Column="1"
+                                    Text="Delete"
+                                    Clicked="DeleteTaskClicked"
+                                    CommandParameter="{Binding Id}"
+                                    BackgroundColor="#E57373"
+                                    TextColor="Black" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

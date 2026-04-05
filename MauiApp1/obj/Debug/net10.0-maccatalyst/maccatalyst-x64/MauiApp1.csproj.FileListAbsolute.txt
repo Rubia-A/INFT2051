@@ -613,3 +613,4 @@ D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\refint\M
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\MauiApp1.pdb
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\MauiApp1.genruntimeconfig.cache
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\ref\MauiApp1.dll
+D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\MauiApp1.sourcelink.json
