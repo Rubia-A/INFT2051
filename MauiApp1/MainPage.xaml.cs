@@ -4,19 +4,24 @@ namespace MauiApp1;
 
 public partial class MainPage : ContentPage
 {
-    int currentYear;
-    int currentMonth;
+    private int currentYear;
+    private int currentMonth;
 
     public MainPage()
     {
         InitializeComponent();
+
+        NavigationPage.SetHasNavigationBar(this, false);
         currentYear = DateTime.Now.Year;
         currentMonth = DateTime.Now.Month;
 
+        SizeChanged += OnPageSizeChanged;
+
         GenerateCalendar();
+        UpdateResponsiveLayout();
     }
 
-    void GenerateCalendar()
+    private void GenerateCalendar()
     {
         CalendarGrid.Children.Clear();
 
@@ -24,31 +29,43 @@ public partial class MainPage : ContentPage
         int month = currentMonth;
 
         int daysInMonth = DateTime.DaysInMonth(year, month);
-        
         DateTime todayDate = DateTime.Now;
-        int today = todayDate.Day;
 
         DateTime firstDay = new DateTime(year, month, 1);
         int startDay = (int)firstDay.DayOfWeek;
 
+        // Convert Sunday-first to Monday-first
         startDay = (startDay == 0) ? 6 : startDay - 1;
 
         MonthLabel.Text = new DateTime(year, month, 1).ToString("MMMM yyyy");
 
+        bool isLandscape = Width > Height;
+
+        double buttonHeight = isLandscape ? 54 : 44;
+        double buttonWidth = isLandscape ? 54 : 44;
+        double fontSize = isLandscape ? 18 : 14;
+
         for (int day = 1; day <= daysInMonth; day++)
         {
-            bool isToday = (year == todayDate.Year &&
-                           month == todayDate.Month &&
-                           day == todayDate.Day);
+            bool isToday =
+                (year == todayDate.Year) &&
+                (month == todayDate.Month) &&
+                (day == todayDate.Day);
 
             Button btn = new Button
             {
                 Text = day.ToString(),
-                HeightRequest = 60,
+                HeightRequest = buttonHeight,
+                WidthRequest = buttonWidth,
+                MinimumWidthRequest = buttonWidth,
+                MinimumHeightRequest = buttonHeight,
                 CornerRadius = 12,
+                FontSize = fontSize,
+                Padding = new Thickness(0),
                 BackgroundColor = isToday
-                    ? Colors.Orange
-                    : Color.FromArgb("#9D8BD9")
+           ? Colors.White
+           : Color.FromArgb("#9D8BD9"),
+                TextColor = Colors.Black
             };
 
             string fullDateKey = new DateTime(year, month, day).ToString("yyyy-MM-dd");
@@ -63,14 +80,16 @@ public partial class MainPage : ContentPage
             CalendarGrid.Add(btn, col, row);
         }
     }
-    async void OnDateClicked(object sender, EventArgs e)
+
+    private async void OnDateClicked(object? sender, EventArgs e)
     {
         if (sender is Button button && button.CommandParameter is string selectedDate)
         {
             await Navigation.PushAsync(new TaskPage(selectedDate));
         }
     }
-    void PreviousMonth(object sender, EventArgs e)
+
+    private void PreviousMonth(object? sender, EventArgs e)
     {
         currentMonth--;
 
@@ -82,8 +101,8 @@ public partial class MainPage : ContentPage
 
         GenerateCalendar();
     }
-      
-    void NextMonth(object sender, EventArgs e)
+
+    private void NextMonth(object? sender, EventArgs e)
     {
         currentMonth++;
 
@@ -94,5 +113,53 @@ public partial class MainPage : ContentPage
         }
 
         GenerateCalendar();
+    }
+
+    private void OnPageSizeChanged(object? sender, EventArgs e)
+    {
+        UpdateResponsiveLayout();
+    }
+
+    private void UpdateResponsiveLayout()
+    {
+        if (Width <= 0 || Height <= 0)
+            return;
+
+        bool isLandscape = Width > Height;
+
+        RootGrid.RowDefinitions.Clear();
+        RootGrid.ColumnDefinitions.Clear();
+
+        RootGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+        RootGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+        RootGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
+
+        Grid.SetRow(HeaderSection, 0);
+        Grid.SetColumn(HeaderSection, 0);
+
+        Grid.SetRow(CalendarSection, 1);
+        Grid.SetColumn(CalendarSection, 0);
+
+        HeaderSection.HorizontalOptions = LayoutOptions.Center;
+        HeaderSection.VerticalOptions = LayoutOptions.Start;
+        MonthNavigation.HorizontalOptions = LayoutOptions.Center;
+        CalendarSection.HorizontalOptions = LayoutOptions.Center;
+
+        if (isLandscape)
+        {
+            RootGrid.Padding = new Thickness(20, 18);
+            HeaderSection.Spacing = 12;
+            CalendarSection.Spacing = 12;
+            CalendarGrid.ColumnSpacing = 12;
+            CalendarGrid.RowSpacing = 12;
+        }
+        else
+        {
+            RootGrid.Padding = new Thickness(24, 24);
+            HeaderSection.Spacing = 16;
+            CalendarSection.Spacing = 16;
+            CalendarGrid.ColumnSpacing = 6;
+            CalendarGrid.RowSpacing = 8;
+        }
     }
 }

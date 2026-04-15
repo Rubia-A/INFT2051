@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "uyle+2Rs3pI=",
+  "dgSpecHash": "rfb+CQvI9tY=",
   "success": true,
   "projectFilePath": "D:\\test\\INFT2051\\MauiApp1\\MauiApp1.csproj",
   "expectedPackageFiles": [
@@ -32,6 +32,7 @@
     "C:\\Users\\wjk20\\.nuget\\packages\\microsoft.web.webview2\\1.0.3179.45\\microsoft.web.webview2.1.0.3179.45.nupkg.sha512",
     "C:\\Users\\wjk20\\.nuget\\packages\\microsoft.windows.sdk.buildtools\\10.0.22621.756\\microsoft.windows.sdk.buildtools.10.0.22621.756.nupkg.sha512",
     "C:\\Users\\wjk20\\.nuget\\packages\\microsoft.windowsappsdk\\1.7.250909003\\microsoft.windowsappsdk.1.7.250909003.nupkg.sha512",
+    "C:\\Users\\wjk20\\.nuget\\packages\\pdfpig\\0.1.14\\pdfpig.0.1.14.nupkg.sha512",
     "C:\\Users\\wjk20\\.nuget\\packages\\xamarin.android.glide\\4.16.0.14\\xamarin.android.glide.4.16.0.14.nupkg.sha512",
     "C:\\Users\\wjk20\\.nuget\\packages\\xamarin.android.glide.annotations\\4.16.0.14\\xamarin.android.glide.annotations.4.16.0.14.nupkg.sha512",
     "C:\\Users\\wjk20\\.nuget\\packages\\xamarin.android.glide.disklrucache\\4.16.0.14\\xamarin.android.glide.disklrucache.4.16.0.14.nupkg.sha512",

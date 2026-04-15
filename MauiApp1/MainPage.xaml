@@ -1,49 +1,95 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="MauiApp1.MainPage"
     BackgroundColor="#1E1E1E">
 
-        <ScrollView>
+    <ScrollView>
+        <Grid
+            x:Name="RootGrid"
+            Padding="24"
+            RowSpacing="20"
+            ColumnSpacing="20">
 
-        <VerticalStackLayout Padding="30" Spacing="25">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-            <Label
-                Text="My Calendar"
-                FontSize="36"
-                FontAttributes="Bold"
-                HorizontalOptions="Center"
-                TextColor="White"/> 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
-                <Button Text="&lt;" Clicked="PreviousMonth"/>
+            <!-- Header Section -->
+            <VerticalStackLayout
+                x:Name="HeaderSection"
+                Grid.Row="0"
+                Grid.Column="0"
+                Spacing="16"
+                HorizontalOptions="Center">
+
                 <Label
-                    x:Name="MonthLabel"
-                    FontSize="20"
-                    VerticalOptions="Center"
-                    TextColor="White"/>
-                <Button Text="&gt;" Clicked="NextMonth"/>
-            </HorizontalStackLayout>
+                    Text="My Calendar"
+                    FontSize="36"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    TextColor="White" />
 
-            <Grid ColumnDefinitions="*,*,*,*,*,*,*">
-                <Label Text="Mon" HorizontalOptions="Center" TextColor="White"/>
-                <Label Text="Tue" Grid.Column="1" HorizontalOptions="Center" TextColor="White"/>
-                <Label Text="Wed" Grid.Column="2" HorizontalOptions="Center" TextColor="White"/>
-                <Label Text="Thu" Grid.Column="3" HorizontalOptions="Center" TextColor="White"/>
-                <Label Text="Fri" Grid.Column="4" HorizontalOptions="Center" TextColor="White"/>
-                <Label Text="Sat" Grid.Column="5" HorizontalOptions="Center" TextColor="White"/>
-                <Label Text="Sun" Grid.Column="6" HorizontalOptions="Center" TextColor="White"/>
-            </Grid>
+                <HorizontalStackLayout
+                    x:Name="MonthNavigation"
+                    HorizontalOptions="Center"
+                    Spacing="20">
 
-            <Grid
-                x:Name="CalendarGrid"
-                ColumnDefinitions="*,*,*,*,*,*,*"
-                RowDefinitions="*,*,*,*,*,*"
-                ColumnSpacing="10"
-                RowSpacing="10"/>   
-        </VerticalStackLayout>
+                    <Button
+                        Text="&lt;"
+                        Clicked="PreviousMonth"
+                        WidthRequest="56"
+                        HeightRequest="56"
+                        BackgroundColor="#9D8BD9"
+                        TextColor="Black" />
+
+                    <Label
+                        x:Name="MonthLabel"
+                        FontSize="22"
+                        VerticalOptions="Center"
+                        TextColor="#BBBBBB" />
+
+                    <Button
+                        Text="&gt;"
+                        Clicked="NextMonth"
+                        WidthRequest="56"
+                        HeightRequest="56"
+                        BackgroundColor="#9D8BD9"
+                        TextColor="Black" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <!-- Calendar Section -->
+            <VerticalStackLayout
+                x:Name="CalendarSection"
+                Grid.Row="1"
+                Grid.Column="0"
+                Spacing="16">
+
+                <Grid ColumnDefinitions="*,*,*,*,*,*,*">
+                    <Label Text="Mon" HorizontalOptions="Center" TextColor="White" />
+                    <Label Text="Tue" Grid.Column="1" HorizontalOptions="Center" TextColor="White" />
+                    <Label Text="Wed" Grid.Column="2" HorizontalOptions="Center" TextColor="White" />
+                    <Label Text="Thu" Grid.Column="3" HorizontalOptions="Center" TextColor="White" />
+                    <Label Text="Fri" Grid.Column="4" HorizontalOptions="Center" TextColor="White" />
+                    <Label Text="Sat" Grid.Column="5" HorizontalOptions="Center" TextColor="White" />
+                    <Label Text="Sun" Grid.Column="6" HorizontalOptions="Center" TextColor="White" />
+                </Grid>
+
+                <Grid
+                    x:Name="CalendarGrid"
+                    ColumnDefinitions="*,*,*,*,*,*,*"
+                    RowDefinitions="*,*,*,*,*,*"
+                    ColumnSpacing="10"
+                    RowSpacing="10" />
+            </VerticalStackLayout>
+
+        </Grid>
     </ScrollView>
-
 </ContentPage>
