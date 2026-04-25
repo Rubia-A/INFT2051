@@ -12,10 +12,6 @@
           "Microsoft.Extensions.Logging.Debug": "10.0.0",
           "Microsoft.Maui.Controls": "10.0.20",
           "PdfPig": "0.1.14",
-          "Microsoft.Maui.Controls.HotReload.Forms": "18.0.0.0",
-          "Microsoft.VisualStudio.DesignTools.MobileTapContracts": "18.0.0.0",
-          "Microsoft.VisualStudio.DesignTools.TapContract": "18.0.0.0",
-          "Microsoft.VisualStudio.DesignTools.XamlTapContract": "18.0.0.0",
           "Microsoft.Web.WebView2.Core.Projection": "1.0.3179.45",
           "runtimepack.Microsoft.Windows.SDK.NET.Ref": "10.0.19041.57"
         },
@@ -546,38 +542,6 @@
           }
         }
       },
-      "Microsoft.Maui.Controls.HotReload.Forms/18.0.0.0": {
-        "runtime": {
-          "Microsoft.Maui.Controls.HotReload.Forms.dll": {
-            "assemblyVersion": "18.0.0.0",
-            "fileVersion": "18.4.38681.55369"
-          }
-        }
-      },
-      "Microsoft.VisualStudio.DesignTools.MobileTapContracts/18.0.0.0": {
-        "runtime": {
-          "Microsoft.VisualStudio.DesignTools.MobileTapContracts.dll": {
-            "assemblyVersion": "18.0.0.0",
-            "fileVersion": "18.4.38681.55369"
-          }
-        }
-      },
-      "Microsoft.VisualStudio.DesignTools.TapContract/18.0.0.0": {
-        "runtime": {
-          "Microsoft.VisualStudio.DesignTools.TapContract.dll": {
-            "assemblyVersion": "18.0.0.0",
-            "fileVersion": "18.4.38681.55369"
-          }
-        }
-      },
-      "Microsoft.VisualStudio.DesignTools.XamlTapContract/18.0.0.0": {
-        "runtime": {
-          "Microsoft.VisualStudio.DesignTools.XamlTapContract.dll": {
-            "assemblyVersion": "18.0.0.0",
-            "fileVersion": "18.4.38681.55369"
-          }
-        }
-      },
       "Microsoft.Web.WebView2.Core.Projection/1.0.3179.45": {
         "runtime": {
           "Microsoft.Web.WebView2.Core.Projection.dll": {
@@ -766,26 +730,6 @@
       "sha512": "sha512-V2Anq0Yvyn3bGGG8WCQxqEAshG0KHIehB0QOotCz14vTkEk1PR3ErPOSmbnEsyOewhdF3G5XpQHywK2L50Xu+A==",
       "path": "pdfpig/0.1.14",
       "hashPath": "pdfpig.0.1.14.nupkg.sha512"
-    },
-    "Microsoft.Maui.Controls.HotReload.Forms/18.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Microsoft.VisualStudio.DesignTools.MobileTapContracts/18.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Microsoft.VisualStudio.DesignTools.TapContract/18.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Microsoft.VisualStudio.DesignTools.XamlTapContract/18.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
     },
     "Microsoft.Web.WebView2.Core.Projection/1.0.3179.45": {
       "type": "reference",

@@ -1,17 +1,28 @@
-﻿using System.Data;
+﻿using System.Globalization;
+using System.Text.Json;
 
 namespace MauiApp1;
 
 public partial class MainPage : ContentPage
 {
+    // remember the month the calendar is showing
     private int currentYear;
     private int currentMonth;
+
+    // used when TaskPage asks MainPage to choose a due date
+    public static bool IsChoosingDueDate { get; set; } = false;
+    public static TaskPage? DueDateTargetPage { get; set; }
+
+    // local storage file
+    private string StorageFilePath =>
+        Path.Combine(FileSystem.AppDataDirectory, "tasks.json");
 
     public MainPage()
     {
         InitializeComponent();
 
         NavigationPage.SetHasNavigationBar(this, false);
+
         currentYear = DateTime.Now.Year;
         currentMonth = DateTime.Now.Month;
 
@@ -19,6 +30,14 @@ public partial class MainPage : ContentPage
 
         GenerateCalendar();
         UpdateResponsiveLayout();
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        // refresh calendar after returning from TaskPage
+        GenerateCalendar();
     }
 
     private void GenerateCalendar()
@@ -34,43 +53,70 @@ public partial class MainPage : ContentPage
         DateTime firstDay = new DateTime(year, month, 1);
         int startDay = (int)firstDay.DayOfWeek;
 
-        // Convert Sunday-first to Monday-first
+        // convert from Sunday-first to Monday-first
         startDay = (startDay == 0) ? 6 : startDay - 1;
 
-        MonthLabel.Text = new DateTime(year, month, 1).ToString("MMMM yyyy");
+        MonthLabel.Text = IsChoosingDueDate
+            ? $"Choose Due Date · {string.Format(CultureInfo.InvariantCulture, "{0:MMMM yyyy}", new DateTime(year, month, 1))}"
+            : string.Format(CultureInfo.InvariantCulture, "{0:MMMM yyyy}", new DateTime(year, month, 1));
+
+        ModeHintLabel.Text = IsChoosingDueDate
+            ? "Choose a date from your calendar for the deadline"
+            : "Tap a date to manage your plan";
 
         bool isLandscape = Width > Height;
 
-        double buttonHeight = isLandscape ? 54 : 44;
-        double buttonWidth = isLandscape ? 54 : 44;
-        double fontSize = isLandscape ? 18 : 14;
+        double buttonHeight = isLandscape ? 72 : 58;
+        double buttonWidth = isLandscape ? 72 : 58;
+        double fontSize = isLandscape ? 19 : 16;
 
         for (int day = 1; day <= daysInMonth; day++)
         {
+            DateTime currentDate = new DateTime(year, month, day);
+            string fullDateKey = string.Format(CultureInfo.InvariantCulture, "{0:yyyy-MM-dd}", currentDate);
+
             bool isToday =
                 (year == todayDate.Year) &&
                 (month == todayDate.Month) &&
                 (day == todayDate.Day);
 
+            bool hasTask = HasTasksForDate(fullDateKey);
+
+            string buttonText = hasTask
+                ? $"{day}\n•"
+                : day.ToString();
+
             Button btn = new Button
             {
-                Text = day.ToString(),
+                Text = buttonText,
                 HeightRequest = buttonHeight,
                 WidthRequest = buttonWidth,
                 MinimumWidthRequest = buttonWidth,
                 MinimumHeightRequest = buttonHeight,
-                CornerRadius = 12,
+                CornerRadius = 22,
                 FontSize = fontSize,
                 Padding = new Thickness(0),
+                LineBreakMode = LineBreakMode.WordWrap,
+
+                // main date button colours
                 BackgroundColor = isToday
-           ? Colors.White
-           : Color.FromArgb("#9D8BD9"),
-                TextColor = Colors.Black
+                    ? Color.FromArgb("#FFE8A8")
+                    : hasTask
+                        ? Color.FromArgb("#FFE4EE")
+                        : Color.FromArgb("#FFF9FC"),
+
+                TextColor = Color.FromArgb("#744A6D"),
+
+                BorderColor = isToday
+                    ? Color.FromArgb("#E2BC54")
+                    : hasTask
+                        ? Color.FromArgb("#F2A1C0")
+                        : Color.FromArgb("#EBC8D8"),
+
+                BorderWidth = 1.3
             };
 
-            string fullDateKey = new DateTime(year, month, day).ToString("yyyy-MM-dd");
             btn.CommandParameter = fullDateKey;
-
             btn.Clicked += OnDateClicked;
 
             int position = day + startDay - 1;
@@ -81,10 +127,45 @@ public partial class MainPage : ContentPage
         }
     }
 
+    private bool HasTasksForDate(string dateKey)
+    {
+        try
+        {
+            if (!File.Exists(StorageFilePath))
+                return false;
+
+            string json = File.ReadAllText(StorageFilePath);
+
+            using JsonDocument document = JsonDocument.Parse(json);
+
+            if (!document.RootElement.TryGetProperty(dateKey, out JsonElement dateTasks))
+                return false;
+
+            return dateTasks.ValueKind == JsonValueKind.Array && dateTasks.GetArrayLength() > 0;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
     private async void OnDateClicked(object? sender, EventArgs e)
     {
         if (sender is Button button && button.CommandParameter is string selectedDate)
         {
+            // if TaskPage is waiting for a due date, send it back
+            if (IsChoosingDueDate && DueDateTargetPage != null)
+            {
+                DueDateTargetPage.SetDueDateFromCalendar(selectedDate);
+
+                IsChoosingDueDate = false;
+                TaskPage targetPage = DueDateTargetPage;
+                DueDateTargetPage = null;
+
+                await Navigation.PushAsync(targetPage);
+                return;
+            }
+
             await Navigation.PushAsync(new TaskPage(selectedDate));
         }
     }
@@ -118,6 +199,7 @@ public partial class MainPage : ContentPage
     private void OnPageSizeChanged(object? sender, EventArgs e)
     {
         UpdateResponsiveLayout();
+        GenerateCalendar();
     }
 
     private void UpdateResponsiveLayout()
@@ -137,29 +219,25 @@ public partial class MainPage : ContentPage
         Grid.SetRow(HeaderSection, 0);
         Grid.SetColumn(HeaderSection, 0);
 
-        Grid.SetRow(CalendarSection, 1);
-        Grid.SetColumn(CalendarSection, 0);
-
         HeaderSection.HorizontalOptions = LayoutOptions.Center;
         HeaderSection.VerticalOptions = LayoutOptions.Start;
         MonthNavigation.HorizontalOptions = LayoutOptions.Center;
-        CalendarSection.HorizontalOptions = LayoutOptions.Center;
 
         if (isLandscape)
         {
-            RootGrid.Padding = new Thickness(20, 18);
+            RootGrid.Padding = new Thickness(30, 20);
             HeaderSection.Spacing = 12;
-            CalendarSection.Spacing = 12;
+            CalendarSection.Spacing = 14;
             CalendarGrid.ColumnSpacing = 12;
-            CalendarGrid.RowSpacing = 12;
+            CalendarGrid.RowSpacing = 10;
         }
         else
         {
-            RootGrid.Padding = new Thickness(24, 24);
-            HeaderSection.Spacing = 16;
-            CalendarSection.Spacing = 16;
-            CalendarGrid.ColumnSpacing = 6;
-            CalendarGrid.RowSpacing = 8;
+            RootGrid.Padding = new Thickness(22, 22);
+            HeaderSection.Spacing = 14;
+            CalendarSection.Spacing = 14;
+            CalendarGrid.ColumnSpacing = 8;
+            CalendarGrid.RowSpacing = 9;
         }
     }
 }

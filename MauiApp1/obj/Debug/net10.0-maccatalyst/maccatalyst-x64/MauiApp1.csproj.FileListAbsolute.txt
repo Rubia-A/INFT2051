@@ -326,6 +326,13 @@ D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\Microsof
 D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\Microsoft.Maui.dll
 D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\Microsoft.Maui.Essentials.dll
 D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\Microsoft.Maui.Graphics.dll
+D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\UglyToad.PdfPig.Core.dll
+D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\UglyToad.PdfPig.DocumentLayoutAnalysis.dll
+D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\UglyToad.PdfPig.Fonts.dll
+D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\UglyToad.PdfPig.Package.dll
+D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\UglyToad.PdfPig.Tokenization.dll
+D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\UglyToad.PdfPig.Tokens.dll
+D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\UglyToad.PdfPig.dll
 D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\ar\Microsoft.Maui.Controls.resources.dll
 D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\ca\Microsoft.Maui.Controls.resources.dll
 D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\cs\Microsoft.Maui.Controls.resources.dll
@@ -563,10 +570,6 @@ D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\libxamar
 D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\libxamarin-dotnet-nativeaot.a
 D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\libxamarin-dotnet.a
 D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\libxamarin-dotnet.dylib
-D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\Microsoft.Maui.Controls.HotReload.Forms.dll
-D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\Microsoft.VisualStudio.DesignTools.MobileTapContracts.dll
-D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\Microsoft.VisualStudio.DesignTools.TapContract.dll
-D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\Microsoft.VisualStudio.DesignTools.XamlTapContract.dll
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\MauiApp1.csproj.AssemblyReference.cache
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\partialappmanifest\_PartialAppManifests.items
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\unpack\Microsoft.Maui.Essentials\BundleResource\xml\microsoft_maui_essentials_fileprovider_file_paths.xml
@@ -618,10 +621,3 @@ D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\refint\M
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\MauiApp1.pdb
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\MauiApp1.genruntimeconfig.cache
 D:\test\INFT2051\MauiApp1\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\ref\MauiApp1.dll
-D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\UglyToad.PdfPig.Core.dll
-D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\UglyToad.PdfPig.DocumentLayoutAnalysis.dll
-D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\UglyToad.PdfPig.Fonts.dll
-D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\UglyToad.PdfPig.Package.dll
-D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\UglyToad.PdfPig.Tokenization.dll
-D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\UglyToad.PdfPig.Tokens.dll
-D:\test\INFT2051\MauiApp1\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\UglyToad.PdfPig.dll

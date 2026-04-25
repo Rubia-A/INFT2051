@@ -3,197 +3,717 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="MauiApp1.TaskPage"
-    BackgroundColor="#1E1E1E">
+    BackgroundColor="#FFF4FA">
 
-    <ScrollView>
-        <Grid
-            x:Name="TaskRootGrid"
-            Padding="24"
-            RowSpacing="18"
-            ColumnSpacing="18">
+    <!-- page root -->
+    <Grid x:Name="PageRoot">
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+        <!-- brighter fantasy background -->
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FFF5FB" Offset="0.0" />
+                <GradientStop Color="#FFEAF5" Offset="0.46" />
+                <GradientStop Color="#EEF7FF" Offset="1.0" />
+            </LinearGradientBrush>
+        </Grid.Background>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <ScrollView>
+            <Grid
+                x:Name="TaskRootGrid"
+                Padding="24"
+                RowSpacing="20"
+                ColumnSpacing="20">
 
-            <!-- Top Panel -->
-            <VerticalStackLayout
-                x:Name="TopPanel"
-                Grid.Row="0"
-                Grid.Column="0"
-                Spacing="16">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-                <HorizontalStackLayout Spacing="12">
-                    <Button
-                        Text="←"
-                        Clicked="BackClicked"
-                        WidthRequest="50"
-                        HeightRequest="50"
-                        BackgroundColor="#9D8BD9"
-                        TextColor="Black" />
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-                    <VerticalStackLayout Spacing="6">
-                        <Label
-                            x:Name="TitleLabel"
-                            Text="Tasks"
-                            FontSize="30"
-                            FontAttributes="Bold"
-                            TextColor="White" />
+                <!-- input area -->
+                <VerticalStackLayout
+                    x:Name="TopPanel"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Spacing="18">
 
-                        <Label
-                            x:Name="DateLabel"
-                            FontSize="18"
-                            TextColor="#BBBBBB" />
-                    </VerticalStackLayout>
-                </HorizontalStackLayout>
+                    <!-- page title -->
+                    <Border
+                        Stroke="#F2B5D1"
+                        StrokeThickness="1.4"
+                        BackgroundColor="#FFFFFF"
+                        Padding="14"
+                        StrokeShape="RoundRectangle 26">
 
-                <!-- Add task area -->
-                <Border
-                    Stroke="#444444"
-                    StrokeThickness="1"
-                    BackgroundColor="#2A2A2A"
-                    Padding="16">
+                        <Border.Shadow>
+                            <Shadow
+                                Brush="#26000000"
+                                Offset="0,6"
+                                Radius="18"
+                                Opacity="0.16" />
+                        </Border.Shadow>
 
-                    <VerticalStackLayout
-                        x:Name="InputPanel"
-                        Spacing="12">
+                        <HorizontalStackLayout Spacing="14">
+                            <Button
+                                Text="←"
+                                Clicked="BackClicked"
+                                WidthRequest="54"
+                                HeightRequest="54"
+                                CornerRadius="20"
+                                BackgroundColor="#F7AFCB"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                FontSize="20" />
 
-                        <Label
-                            Text="Add Custom Task"
-                            FontSize="18"
-                            FontAttributes="Bold"
-                            TextColor="White" />
+                            <VerticalStackLayout Spacing="4">
+                                <Label
+                                    x:Name="TitleLabel"
+                                    Text="Daily Plan"
+                                    FontSize="31"
+                                    FontAttributes="Bold"
+                                    TextColor="#7D436A" />
 
-                        <Entry
-                            x:Name="TaskEntry"
-                            Placeholder="Enter a task"
-                            PlaceholderColor="#999999"
-                            TextColor="White"
-                            BackgroundColor="#3A3A3A" />
+                                <Label
+                                    x:Name="DateLabel"
+                                    FontSize="16"
+                                    TextColor="#A65B8A" />
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </Border>
 
-                        <Label
-                            x:Name="StatusLabel"
-                            TextColor="Red"
-                            FontSize="14"
-                            IsVisible="False" />
+                    <!-- create new item -->
+                    <Border
+                        Stroke="#F0A8C9"
+                        StrokeThickness="1.7"
+                        BackgroundColor="#FFFFFF"
+                        Padding="20"
+                        StrokeShape="RoundRectangle 30">
 
-                        <Button
-                            x:Name="AddTaskButton"
-                            Text="Add Task"
-                            Clicked="AddTaskClicked"
-                            BackgroundColor="#9D8BD9"
-                            TextColor="Black" />
-                    </VerticalStackLayout>
-                </Border>
+                        <Border.Shadow>
+                            <Shadow
+                                Brush="#26000000"
+                                Offset="0,8"
+                                Radius="22"
+                                Opacity="0.15" />
+                        </Border.Shadow>
 
-                <!-- PDF reserved area -->
-                <Border
-                    Stroke="#444444"
-                    StrokeThickness="1"
-                    BackgroundColor="#2A2A2A"
-                    Padding="16">
+                        <VerticalStackLayout
+                            x:Name="InputPanel"
+                            Spacing="15">
 
-                    <VerticalStackLayout Spacing="10">
-                        <Label
-                            Text="Future PDF Import"
-                            FontSize="18"
-                            FontAttributes="Bold"
-                            TextColor="White" />
+                            <Label
+                                Text="Create a new plan"
+                                FontSize="23"
+                                FontAttributes="Bold"
+                                TextColor="#7D436A" />
 
-                        <Label
-                            Text="Reserved for File System / File Picker and OCR later."
-                            TextColor="#BBBBBB" />
-
-                        <Button
-                            x:Name="PdfButton"
-                            Text="Import PDF"
-                            Clicked="ImportPdfClicked"
-                            BackgroundColor="#666666"
-                            TextColor="White" />
-
-                        <Button
-                            Text="Import All Tasks"
-                            Clicked="ImportAllPdfClicked"
-                            BackgroundColor="#777777"
-                            TextColor="White" />
-
-                        <Button
-                            Text="Undo Last Import"
-                            Clicked="UndoLastImportClicked"
-                            BackgroundColor="#555555"
-                            TextColor="White" />
-
-                        <Label
-                            x:Name="PdfFileNameLabel"
-                            Text="No PDF imported yet."
-                            TextColor="#BBBBBB"
-                            FontSize="14" />
-
-                        <Label
-                            x:Name="PdfStatusLabel"
-                            TextColor="#BBBBBB"
-                            FontSize="13" />    
-                    </VerticalStackLayout>
-                </Border>
-            </VerticalStackLayout>
-
-            <!-- List Panel -->
-            <VerticalStackLayout
-                x:Name="ListPanel"
-                Grid.Row="1"
-                Grid.Column="0"
-                Spacing="12">
-
-                <Label
-                    Text="Task List"
-                    FontSize="20"
-                    FontAttributes="Bold"
-                    TextColor="White" />
-
-                <CollectionView
-                    x:Name="TaskCollectionView"
-                    SelectionMode="None">
-
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
+                            <!-- text input -->
                             <Border
-                                Stroke="#444444"
-                                StrokeThickness="1"
-                                BackgroundColor="#2A2A2A"
-                                Padding="12"
-                                Margin="0,0,0,10">
+                                Stroke="#F0B6D2"
+                                StrokeThickness="1.2"
+                                BackgroundColor="#FFFFFF"
+                                Padding="12,4"
+                                StrokeShape="RoundRectangle 18">
 
-                                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                                <Entry
+                                    x:Name="TaskEntry"
+                                    Placeholder="e.g. Finish report or review slides"
+                                    PlaceholderColor="#B97FA1"
+                                    TextColor="#744A6D"
+                                    BackgroundColor="Transparent" />
+                            </Border>
+
+                            <!-- custom dropdowns -->
+                            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+
+                                <!-- category -->
+                                <VerticalStackLayout Spacing="7">
                                     <Label
-                                        Text="{Binding Text}"
-                                        VerticalOptions="Center"
-                                        TextColor="White">
+                                        Text="Category"
+                                        TextColor="#9A5180"
+                                        FontSize="13"
+                                        FontAttributes="Bold" />
 
-                                        <Label.GestureRecognizers>
-                                            <TapGestureRecognizer
-                                                Tapped="OnEditTaskTapped" />
-                                        </Label.GestureRecognizers>
-                                    </Label>
+                                    <Border
+                                        Stroke="#E891BF"
+                                        StrokeThickness="1.4"
+                                        BackgroundColor="#FFFFFF"
+                                        Padding="14,12"
+                                        StrokeShape="RoundRectangle 18">
+
+                                        <Border.Shadow>
+                                            <Shadow
+                                                Brush="#16000000"
+                                                Offset="0,3"
+                                                Radius="10"
+                                                Opacity="0.10" />
+                                        </Border.Shadow>
+
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="ToggleCategoryMenu" />
+                                        </Border.GestureRecognizers>
+
+                                        <Grid ColumnDefinitions="*,Auto">
+                                            <Label
+                                                x:Name="CategoryValueLabel"
+                                                Text="To-do"
+                                                TextColor="#744A6D"
+                                                FontSize="15"
+                                                FontAttributes="Bold"
+                                                VerticalOptions="Center" />
+
+                                            <Label
+                                                Grid.Column="1"
+                                                Text="▾"
+                                                FontSize="16"
+                                                TextColor="#E15AA8"
+                                                VerticalOptions="Center" />
+                                        </Grid>
+                                    </Border>
+
+                                    <Border
+                                        x:Name="CategoryOptionsPanel"
+                                        IsVisible="False"
+                                        Stroke="#E891BF"
+                                        StrokeThickness="1.4"
+                                        BackgroundColor="#FFFFFF"
+                                        Padding="8"
+                                        StrokeShape="RoundRectangle 18">
+
+                                        <Border.Shadow>
+                                            <Shadow
+                                                Brush="#22000000"
+                                                Offset="0,6"
+                                                Radius="18"
+                                                Opacity="0.18" />
+                                        </Border.Shadow>
+
+                                        <VerticalStackLayout Spacing="6">
+                                            <Button
+                                                Text="To-do"
+                                                Clicked="SelectCategoryClicked"
+                                                CommandParameter="To-do"
+                                                BackgroundColor="#FFEAF5"
+                                                TextColor="#7D436A"
+                                                FontAttributes="Bold"
+                                                CornerRadius="15" />
+
+                                            <Button
+                                                Text="Deadline"
+                                                Clicked="SelectCategoryClicked"
+                                                CommandParameter="Deadline"
+                                                BackgroundColor="#E6F3FF"
+                                                TextColor="#496D9B"
+                                                FontAttributes="Bold"
+                                                CornerRadius="15" />
+                                        </VerticalStackLayout>
+                                    </Border>
+                                </VerticalStackLayout>
+
+                                <!-- priority -->
+                                <VerticalStackLayout Grid.Column="1" Spacing="7">
+                                    <Label
+                                        Text="Priority"
+                                        TextColor="#9A5180"
+                                        FontSize="13"
+                                        FontAttributes="Bold" />
+
+                                    <Border
+                                        Stroke="#E891BF"
+                                        StrokeThickness="1.4"
+                                        BackgroundColor="#FFFFFF"
+                                        Padding="14,12"
+                                        StrokeShape="RoundRectangle 18">
+
+                                        <Border.Shadow>
+                                            <Shadow
+                                                Brush="#16000000"
+                                                Offset="0,3"
+                                                Radius="10"
+                                                Opacity="0.10" />
+                                        </Border.Shadow>
+
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TogglePriorityMenu" />
+                                        </Border.GestureRecognizers>
+
+                                        <Grid ColumnDefinitions="*,Auto">
+                                            <Label
+                                                x:Name="PriorityValueLabel"
+                                                Text="Medium"
+                                                TextColor="#744A6D"
+                                                FontSize="15"
+                                                FontAttributes="Bold"
+                                                VerticalOptions="Center" />
+
+                                            <Label
+                                                Grid.Column="1"
+                                                Text="▾"
+                                                FontSize="16"
+                                                TextColor="#E15AA8"
+                                                VerticalOptions="Center" />
+                                        </Grid>
+                                    </Border>
+
+                                    <Border
+                                        x:Name="PriorityOptionsPanel"
+                                        IsVisible="False"
+                                        Stroke="#E891BF"
+                                        StrokeThickness="1.4"
+                                        BackgroundColor="#FFFFFF"
+                                        Padding="8"
+                                        StrokeShape="RoundRectangle 18">
+
+                                        <Border.Shadow>
+                                            <Shadow
+                                                Brush="#22000000"
+                                                Offset="0,6"
+                                                Radius="18"
+                                                Opacity="0.18" />
+                                        </Border.Shadow>
+
+                                        <VerticalStackLayout Spacing="6">
+                                            <Button
+                                                Text="Low"
+                                                Clicked="SelectPriorityClicked"
+                                                CommandParameter="Low"
+                                                BackgroundColor="#E3F5FF"
+                                                TextColor="#4A759D"
+                                                FontAttributes="Bold"
+                                                CornerRadius="15" />
+
+                                            <Button
+                                                Text="Medium"
+                                                Clicked="SelectPriorityClicked"
+                                                CommandParameter="Medium"
+                                                BackgroundColor="#FFF0B8"
+                                                TextColor="#8A6827"
+                                                FontAttributes="Bold"
+                                                CornerRadius="15" />
+
+                                            <Button
+                                                Text="High"
+                                                Clicked="SelectPriorityClicked"
+                                                CommandParameter="High"
+                                                BackgroundColor="#FFD6E6"
+                                                TextColor="#9A5475"
+                                                FontAttributes="Bold"
+                                                CornerRadius="15" />
+                                        </VerticalStackLayout>
+                                    </Border>
+                                </VerticalStackLayout>
+                            </Grid>
+
+                            <!-- dates -->
+                            <Border
+                                Stroke="#EBA4C7"
+                                StrokeThickness="1.5"
+                                BackgroundColor="#FFFFFF"
+                                Padding="15"
+                                StrokeShape="RoundRectangle 22">
+
+                                <Border.Shadow>
+                                    <Shadow
+                                        Brush="#12000000"
+                                        Offset="0,4"
+                                        Radius="12"
+                                        Opacity="0.10" />
+                                </Border.Shadow>
+
+                                <VerticalStackLayout Spacing="7">
+                                    <Label
+                                        Text="Schedule"
+                                        TextColor="#7D436A"
+                                        FontAttributes="Bold"
+                                        FontSize="15" />
+
+                                    <Label
+                                        x:Name="StartDateLabel"
+                                        Text="Start Date:"
+                                        TextColor="#855A7B"
+                                        FontSize="14" />
+
+                                    <Label
+                                        x:Name="DueDateLabel"
+                                        Text="Due Date:"
+                                        TextColor="#855A7B"
+                                        FontSize="14" />
 
                                     <Button
-                                        Grid.Column="1"
-                                        Text="Delete"
-                                        Clicked="DeleteTaskClicked"
-                                        CommandParameter="{Binding Id}"
-                                        BackgroundColor="#E57373"
-                                        TextColor="Black" />
-                                </Grid>
+                                        Text="Choose Due Date from Calendar"
+                                        Clicked="ChooseDueDateClicked"
+                                        BackgroundColor="#DDEEFF"
+                                        TextColor="#4E6E9B"
+                                        FontAttributes="Bold"
+                                        CornerRadius="16" />
+                                </VerticalStackLayout>
                             </Border>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </VerticalStackLayout>
 
+                            <Label
+                                x:Name="StatusLabel"
+                                TextColor="#D66380"
+                                FontSize="14"
+                                IsVisible="False" />
+
+                            <Button
+                                x:Name="AddTaskButton"
+                                Text="Add Item"
+                                Clicked="AddTaskClicked"
+                                BackgroundColor="#F061AD"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                CornerRadius="20"
+                                HeightRequest="48" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- pdf card -->
+                    <Border
+                        Stroke="#F0A8C9"
+                        StrokeThickness="1.7"
+                        BackgroundColor="#FFFFFF"
+                        Padding="20"
+                        StrokeShape="RoundRectangle 30">
+
+                        <Border.Shadow>
+                            <Shadow
+                                Brush="#26000000"
+                                Offset="0,8"
+                                Radius="22"
+                                Opacity="0.15" />
+                        </Border.Shadow>
+
+                        <VerticalStackLayout Spacing="11">
+                            <Label
+                                Text="PDF Timetable Import"
+                                FontSize="22"
+                                FontAttributes="Bold"
+                                TextColor="#7D436A" />
+
+                            <Label
+                                Text="Import a timetable PDF and turn class information into planner items."
+                                TextColor="#9D5D86"
+                                FontSize="14" />
+
+                            <Button
+                                x:Name="PdfButton"
+                                Text="Import PDF for This Day"
+                                Clicked="ImportPdfClicked"
+                                BackgroundColor="#DDEEFF"
+                                TextColor="#4E6E9B"
+                                FontAttributes="Bold"
+                                CornerRadius="16" />
+
+                            <Button
+                                Text="Import PDF for All Days"
+                                Clicked="ImportAllPdfClicked"
+                                BackgroundColor="#FFF0B8"
+                                TextColor="#8A6827"
+                                FontAttributes="Bold"
+                                CornerRadius="16" />
+
+                            <Button
+                                Text="Undo Last PDF Import"
+                                Clicked="UndoLastImportClicked"
+                                BackgroundColor="#FFEAF5"
+                                TextColor="#9A5475"
+                                FontAttributes="Bold"
+                                CornerRadius="16" />
+
+                            <Label
+                                x:Name="PdfFileNameLabel"
+                                Text="No PDF imported yet."
+                                TextColor="#A37AA0"
+                                FontSize="13" />
+
+                            <Label
+                                x:Name="PdfStatusLabel"
+                                TextColor="#A37AA0"
+                                FontSize="13" />
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- list area -->
+                <VerticalStackLayout
+                    x:Name="ListPanel"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Spacing="14">
+
+                    <Border
+                        Stroke="#F0A8C9"
+                        StrokeThickness="1.5"
+                        BackgroundColor="#FFFFFF"
+                        Padding="16,11"
+                        StrokeShape="RoundRectangle 24">
+
+                        <Border.Shadow>
+                            <Shadow
+                                Brush="#20000000"
+                                Offset="0,5"
+                                Radius="16"
+                                Opacity="0.13" />
+                        </Border.Shadow>
+
+                        <Label
+                            Text="Plan List"
+                            FontSize="24"
+                            FontAttributes="Bold"
+                            TextColor="#7D436A" />
+                    </Border>
+
+                    <CollectionView
+                        x:Name="TaskCollectionView"
+                        SelectionMode="None">
+
+                        <CollectionView.EmptyView>
+                            <Border
+                                Stroke="#F0A8C9"
+                                StrokeThickness="1.5"
+                                BackgroundColor="#FFFFFF"
+                                Padding="26"
+                                StrokeShape="RoundRectangle 26">
+
+                                <Border.Shadow>
+                                    <Shadow
+                                        Brush="#18000000"
+                                        Offset="0,5"
+                                        Radius="16"
+                                        Opacity="0.12" />
+                                </Border.Shadow>
+
+                                <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                                    <Label
+                                        Text="✨"
+                                        FontSize="30"
+                                        HorizontalOptions="Center" />
+
+                                    <Label
+                                        Text="Nothing here yet"
+                                        FontSize="18"
+                                        FontAttributes="Bold"
+                                        HorizontalOptions="Center"
+                                        TextColor="#7D436A" />
+
+                                    <Label
+                                        Text="Add a new item or import a timetable PDF."
+                                        FontSize="13"
+                                        HorizontalOptions="Center"
+                                        TextColor="#A37AA0" />
+                                </VerticalStackLayout>
+                            </Border>
+                        </CollectionView.EmptyView>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border
+                                    Stroke="{Binding CardStrokeColor}"
+                                    StrokeThickness="1.4"
+                                    BackgroundColor="{Binding CardBackgroundColor}"
+                                    Padding="15"
+                                    Margin="0,0,0,13"
+                                    StrokeShape="RoundRectangle 26">
+
+                                    <Border.Shadow>
+                                        <Shadow
+                                            Brush="#18000000"
+                                            Offset="0,5"
+                                            Radius="16"
+                                            Opacity="0.12" />
+                                    </Border.Shadow>
+
+                                    <Grid
+                                        RowDefinitions="Auto,Auto,Auto"
+                                        ColumnDefinitions="*,Auto"
+                                        RowSpacing="9"
+                                        ColumnSpacing="12">
+
+                                        <!-- top tags -->
+                                        <HorizontalStackLayout Spacing="8">
+                                            <Border
+                                                BackgroundColor="{Binding BadgeBackgroundColor}"
+                                                Padding="10,4"
+                                                StrokeThickness="0"
+                                                StrokeShape="RoundRectangle 14">
+
+                                                <Label
+                                                    Text="{Binding Category}"
+                                                    FontSize="12"
+                                                    FontAttributes="Bold"
+                                                    TextColor="{Binding BadgeTextColor}" />
+                                            </Border>
+
+                                            <Border
+                                                BackgroundColor="{Binding PriorityBackgroundColor}"
+                                                Padding="10,4"
+                                                StrokeThickness="0"
+                                                StrokeShape="RoundRectangle 14">
+
+                                                <Label
+                                                    Text="{Binding Priority}"
+                                                    FontSize="12"
+                                                    FontAttributes="Bold"
+                                                    TextColor="{Binding PriorityTextColor}" />
+                                            </Border>
+
+                                            <Label
+                                                Text="{Binding StatusText}"
+                                                FontSize="12"
+                                                FontAttributes="Bold"
+                                                VerticalOptions="Center"
+                                                TextColor="{Binding StatusTextColor}"
+                                                IsVisible="{Binding IsCompleted}" />
+                                        </HorizontalStackLayout>
+
+                                        <!-- title -->
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.ColumnSpan="2"
+                                            Text="{Binding Title}"
+                                            TextColor="{Binding TitleTextColor}"
+                                            FontSize="18"
+                                            FontAttributes="Bold"
+                                            LineBreakMode="TailTruncation"
+                                            TextDecorations="{Binding TitleDecoration}">
+
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnEditTaskTapped" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+
+                                        <!-- dates -->
+                                        <VerticalStackLayout
+                                            Grid.Row="2"
+                                            Spacing="2">
+
+                                            <Label
+                                                Text="{Binding StartDisplayText}"
+                                                TextColor="{Binding DetailTextColor}"
+                                                FontSize="13" />
+
+                                            <Label
+                                                Text="{Binding DueDisplayText}"
+                                                TextColor="{Binding DetailTextColor}"
+                                                FontSize="13"
+                                                IsVisible="{Binding HasDueDate}" />
+                                        </VerticalStackLayout>
+
+                                        <!-- buttons -->
+                                        <VerticalStackLayout
+                                            Grid.Row="0"
+                                            Grid.RowSpan="3"
+                                            Grid.Column="1"
+                                            Spacing="8"
+                                            VerticalOptions="Center">
+
+                                            <Button
+                                                Text="{Binding CompletionButtonText}"
+                                                Clicked="ToggleCompleteClicked"
+                                                CommandParameter="{Binding Id}"
+                                                BackgroundColor="{Binding CompletionButtonColor}"
+                                                TextColor="{Binding CompletionButtonTextColor}"
+                                                CornerRadius="15"
+                                                FontSize="12"
+                                                FontAttributes="Bold"
+                                                WidthRequest="102" />
+
+                                            <Button
+                                                Text="Delete"
+                                                Clicked="DeleteTaskClicked"
+                                                CommandParameter="{Binding Id}"
+                                                BackgroundColor="#FFD4E0"
+                                                TextColor="#8C4E62"
+                                                CornerRadius="15"
+                                                FontSize="12"
+                                                FontAttributes="Bold"
+                                                WidthRequest="102" />
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Grid>
+        </ScrollView>
+
+        <!-- custom edit popup -->
+        <Grid
+            x:Name="EditOverlay"
+            IsVisible="False"
+            BackgroundColor="#73000000"
+            Padding="24">
+
+            <Grid VerticalOptions="Center" HorizontalOptions="Center">
+                <Border
+                    Stroke="#F0A8C9"
+                    StrokeThickness="1.6"
+                    BackgroundColor="#FFFFFF"
+                    Padding="24"
+                    WidthRequest="430"
+                    StrokeShape="RoundRectangle 28">
+
+                    <Border.Shadow>
+                        <Shadow
+                            Brush="#33000000"
+                            Offset="0,10"
+                            Radius="24"
+                            Opacity="0.20" />
+                    </Border.Shadow>
+
+                    <VerticalStackLayout Spacing="15">
+                        <Label
+                            Text="Edit Item"
+                            FontSize="25"
+                            FontAttributes="Bold"
+                            TextColor="#7D436A" />
+
+                        <Label
+                            Text="Update the title:"
+                            FontSize="15"
+                            TextColor="#9D5D86" />
+
+                        <Border
+                            Stroke="#F0B6D2"
+                            StrokeThickness="1.2"
+                            BackgroundColor="#FFFFFF"
+                            Padding="12,4"
+                            StrokeShape="RoundRectangle 18">
+
+                            <Entry
+                                x:Name="EditEntry"
+                                Placeholder="Type here..."
+                                PlaceholderColor="#B97FA1"
+                                TextColor="#744A6D"
+                                BackgroundColor="Transparent" />
+                        </Border>
+
+                        <HorizontalStackLayout HorizontalOptions="End" Spacing="10">
+                            <Button
+                                Text="Cancel"
+                                Clicked="CancelEditClicked"
+                                BackgroundColor="#E6F3FF"
+                                TextColor="#4E6E9B"
+                                FontAttributes="Bold"
+                                CornerRadius="16"
+                                WidthRequest="112" />
+
+                            <Button
+                                Text="Save"
+                                Clicked="SaveEditClicked"
+                                BackgroundColor="#F061AD"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                CornerRadius="16"
+                                WidthRequest="112" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
         </Grid>
-    </ScrollView>
+    </Grid>
 </ContentPage>

@@ -3,13 +3,22 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="MauiApp1.MainPage"
-    BackgroundColor="#1E1E1E">
+    BackgroundColor="#FFF7FB">
+
+    <!-- soft fantasy background -->
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#FFF9FC" Offset="0.0" />
+            <GradientStop Color="#FDF0F7" Offset="0.50" />
+            <GradientStop Color="#F8F1FB" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
 
     <ScrollView>
         <Grid
             x:Name="RootGrid"
             Padding="24"
-            RowSpacing="20"
+            RowSpacing="22"
             ColumnSpacing="20">
 
             <Grid.RowDefinitions>
@@ -21,75 +30,150 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <!-- Header Section -->
+            <!-- header area -->
             <VerticalStackLayout
                 x:Name="HeaderSection"
                 Grid.Row="0"
                 Grid.Column="0"
-                Spacing="16"
+                Spacing="14"
                 HorizontalOptions="Center">
 
-                <Label
-                    Text="My Calendar"
-                    FontSize="36"
-                    FontAttributes="Bold"
-                    HorizontalOptions="Center"
-                    TextColor="White" />
+                <!-- title card -->
+                <Border
+                    Stroke="#EDC1D6"
+                    StrokeThickness="1.4"
+                    BackgroundColor="#FFFFFF"
+                    Padding="26"
+                    StrokeShape="RoundRectangle 30">
 
+                    <Border.Shadow>
+                        <Shadow
+                            Brush="#1F000000"
+                            Offset="0,6"
+                            Radius="18"
+                            Opacity="0.14" />
+                    </Border.Shadow>
+
+                    <VerticalStackLayout Spacing="8">
+                        <Label
+                            Text="Student Planner"
+                            FontSize="36"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            TextColor="#7D436A" />
+
+                        <Label
+                            Text="A soft little place for classes, tasks and deadlines"
+                            FontSize="14"
+                            HorizontalOptions="Center"
+                            TextColor="#A06B8B" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- month switch -->
                 <HorizontalStackLayout
                     x:Name="MonthNavigation"
                     HorizontalOptions="Center"
-                    Spacing="20">
+                    Spacing="16">
 
                     <Button
-                        Text="&lt;"
+                        Text="‹"
                         Clicked="PreviousMonth"
-                        WidthRequest="56"
-                        HeightRequest="56"
-                        BackgroundColor="#9D8BD9"
-                        TextColor="Black" />
+                        WidthRequest="58"
+                        HeightRequest="58"
+                        CornerRadius="21"
+                        FontSize="26"
+                        BackgroundColor="#FFB2C7"
+                        TextColor="White"
+                        FontAttributes="Bold" />
 
-                    <Label
-                        x:Name="MonthLabel"
-                        FontSize="22"
-                        VerticalOptions="Center"
-                        TextColor="#BBBBBB" />
+                    <Border
+                        Stroke="#EDC1D6"
+                        StrokeThickness="1.3"
+                        BackgroundColor="#FFFFFF"
+                        Padding="24,12"
+                        StrokeShape="RoundRectangle 20">
+
+                        <Border.Shadow>
+                            <Shadow
+                                Brush="#12000000"
+                                Offset="0,4"
+                                Radius="12"
+                                Opacity="0.10" />
+                        </Border.Shadow>
+
+                        <Label
+                            x:Name="MonthLabel"
+                            FontSize="21"
+                            FontAttributes="Bold"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            TextColor="#7D436A" />
+                    </Border>
 
                     <Button
-                        Text="&gt;"
+                        Text="›"
                         Clicked="NextMonth"
-                        WidthRequest="56"
-                        HeightRequest="56"
-                        BackgroundColor="#9D8BD9"
-                        TextColor="Black" />
+                        WidthRequest="58"
+                        HeightRequest="58"
+                        CornerRadius="21"
+                        FontSize="26"
+                        BackgroundColor="#FFB2C7"
+                        TextColor="White"
+                        FontAttributes="Bold" />
                 </HorizontalStackLayout>
+
+                <!-- hint -->
+                <Label
+                    x:Name="ModeHintLabel"
+                    Text="Tap a date to manage your plan"
+                    FontSize="13"
+                    HorizontalOptions="Center"
+                    TextColor="#A57A98" />
             </VerticalStackLayout>
 
-            <!-- Calendar Section -->
-            <VerticalStackLayout
-                x:Name="CalendarSection"
+            <!-- calendar card -->
+            <Border
                 Grid.Row="1"
                 Grid.Column="0"
-                Spacing="16">
+                Stroke="#EDC1D6"
+                StrokeThickness="1.4"
+                BackgroundColor="#FFFFFF"
+                Padding="20"
+                StrokeShape="RoundRectangle 32">
 
-                <Grid ColumnDefinitions="*,*,*,*,*,*,*">
-                    <Label Text="Mon" HorizontalOptions="Center" TextColor="White" />
-                    <Label Text="Tue" Grid.Column="1" HorizontalOptions="Center" TextColor="White" />
-                    <Label Text="Wed" Grid.Column="2" HorizontalOptions="Center" TextColor="White" />
-                    <Label Text="Thu" Grid.Column="3" HorizontalOptions="Center" TextColor="White" />
-                    <Label Text="Fri" Grid.Column="4" HorizontalOptions="Center" TextColor="White" />
-                    <Label Text="Sat" Grid.Column="5" HorizontalOptions="Center" TextColor="White" />
-                    <Label Text="Sun" Grid.Column="6" HorizontalOptions="Center" TextColor="White" />
-                </Grid>
+                <Border.Shadow>
+                    <Shadow
+                        Brush="#1F000000"
+                        Offset="0,7"
+                        Radius="20"
+                        Opacity="0.14" />
+                </Border.Shadow>
 
-                <Grid
-                    x:Name="CalendarGrid"
-                    ColumnDefinitions="*,*,*,*,*,*,*"
-                    RowDefinitions="*,*,*,*,*,*"
-                    ColumnSpacing="10"
-                    RowSpacing="10" />
-            </VerticalStackLayout>
+                <VerticalStackLayout
+                    x:Name="CalendarSection"
+                    Spacing="16">
 
+                    <!-- week labels -->
+                    <Grid ColumnDefinitions="*,*,*,*,*,*,*">
+                        <Label Text="Mon" HorizontalOptions="Center" TextColor="#B36A95" FontAttributes="Bold" />
+                        <Label Text="Tue" Grid.Column="1" HorizontalOptions="Center" TextColor="#B36A95" FontAttributes="Bold" />
+                        <Label Text="Wed" Grid.Column="2" HorizontalOptions="Center" TextColor="#B36A95" FontAttributes="Bold" />
+                        <Label Text="Thu" Grid.Column="3" HorizontalOptions="Center" TextColor="#B36A95" FontAttributes="Bold" />
+                        <Label Text="Fri" Grid.Column="4" HorizontalOptions="Center" TextColor="#B36A95" FontAttributes="Bold" />
+                        <Label Text="Sat" Grid.Column="5" HorizontalOptions="Center" TextColor="#B36A95" FontAttributes="Bold" />
+                        <Label Text="Sun" Grid.Column="6" HorizontalOptions="Center" TextColor="#B36A95" FontAttributes="Bold" />
+                    </Grid>
+
+                    <!-- date buttons will be generated in code -->
+                    <Grid
+                        x:Name="CalendarGrid"
+                        ColumnDefinitions="*,*,*,*,*,*,*"
+                        RowDefinitions="*,*,*,*,*,*"
+                        ColumnSpacing="10"
+                        RowSpacing="10" />
+                </VerticalStackLayout>
+            </Border>
         </Grid>
     </ScrollView>
 </ContentPage>
