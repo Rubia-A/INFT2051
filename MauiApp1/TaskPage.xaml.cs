@@ -71,10 +71,6 @@ public partial class TaskPage : ContentPage
             DateLabel.Text = selectedDateKey;
         }
 
-        // set default custom dropdown values
-        CategoryValueLabel.Text = _selectedCategory;
-        PriorityValueLabel.Text = _selectedPriority;
-
         UpdateDateLabels();
 
         TaskCollectionView.ItemsSource = _tasks;
@@ -84,6 +80,37 @@ public partial class TaskPage : ContentPage
 
         _ = LoadTasksAsync();
         _ = LoadLastImportAsync();
+    }
+
+    public TaskPage(
+        string selectedDateKey,
+        string dueDateKey,
+        string draftTitle,
+        string draftCategory,
+        string draftPriority) : this(selectedDateKey)
+    {
+        _dueDateKey = dueDateKey;
+
+        if (!string.IsNullOrWhiteSpace(draftTitle))
+        {
+            TaskEntry.Text = draftTitle;
+        }
+
+        _selectedCategory = string.IsNullOrWhiteSpace(draftCategory)
+            ? "To-do"
+            : draftCategory;
+
+        _selectedPriority = string.IsNullOrWhiteSpace(draftPriority)
+            ? "Medium"
+            : draftPriority;
+
+        CategoryValueLabel.Text = _selectedCategory;
+        PriorityValueLabel.Text = _selectedPriority;
+
+        CategoryOptionsPanel.IsVisible = false;
+        PriorityOptionsPanel.IsVisible = false;
+
+        UpdateDateLabels();
     }
 
     private async Task LoadTasksAsync()
@@ -880,6 +907,12 @@ public partial class TaskPage : ContentPage
     {
         MainPage.IsChoosingDueDate = true;
         MainPage.DueDateTargetPage = this;
+
+        // Keep current draft content when going back to choose due date
+        MainPage.PendingStartDateKey = _selectedDateKey;
+        MainPage.PendingDraftTitle = TaskEntry.Text ?? string.Empty;
+        MainPage.PendingDraftCategory = _selectedCategory;
+        MainPage.PendingDraftPriority = _selectedPriority;
 
         await Navigation.PopAsync();
     }

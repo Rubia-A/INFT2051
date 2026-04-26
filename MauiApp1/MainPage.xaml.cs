@@ -13,6 +13,12 @@ public partial class MainPage : ContentPage
     public static bool IsChoosingDueDate { get; set; } = false;
     public static TaskPage? DueDateTargetPage { get; set; }
 
+    // Save temporary data when user goes back to calendar to choose a due date
+    public static string? PendingStartDateKey { get; set; }
+    public static string? PendingDraftTitle { get; set; }
+    public static string? PendingDraftCategory { get; set; }
+    public static string? PendingDraftPriority { get; set; }
+
     // local storage file
     private string StorageFilePath =>
         Path.Combine(FileSystem.AppDataDirectory, "tasks.json");
@@ -154,15 +160,26 @@ public partial class MainPage : ContentPage
         if (sender is Button button && button.CommandParameter is string selectedDate)
         {
             // if TaskPage is waiting for a due date, send it back
-            if (IsChoosingDueDate && DueDateTargetPage != null)
+            if (IsChoosingDueDate)
             {
-                DueDateTargetPage.SetDueDateFromCalendar(selectedDate);
+                string startDateKey = PendingStartDateKey ?? selectedDate;
+                string draftTitle = PendingDraftTitle ?? string.Empty;
+                string draftCategory = PendingDraftCategory ?? "Deadline";
+                string draftPriority = PendingDraftPriority ?? "Medium";
 
+                // Clear temporary due date selection state
                 IsChoosingDueDate = false;
-                TaskPage targetPage = DueDateTargetPage;
                 DueDateTargetPage = null;
+                PendingStartDateKey = null;
+                PendingDraftTitle = null;
+                PendingDraftCategory = null;
+                PendingDraftPriority = null;
 
-                await Navigation.PushAsync(targetPage);
+                // Create a new TaskPage instead of reusing the old popped page
+                await Navigation.PushAsync(
+                    new TaskPage(startDateKey, selectedDate, draftTitle, draftCategory, draftPriority)
+                );
+
                 return;
             }
 
